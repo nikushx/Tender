@@ -153,6 +153,8 @@ function callback(results, status) {
             
             while (check == 0) {
                 
+                console.log("FLUID: Entering While Loop");
+                
                 rand_num3 = Math.floor(Math.random() * (22 - 1 + 1)) + 1;
                 
                 if (prev_rands[0] == rand_num3 || prev_rands[1] == rand_num3 || prev_rands[2] == rand_num3 || prev_rands[3] == rand_num3 || prev_rands[4] == rand_num3 || prev_rands[5] == rand_num3) {
@@ -160,7 +162,10 @@ function callback(results, status) {
                     console.log("ERROR: Value was equal to a recent value, generating once more.");
                     
                 } else {
-
+                    
+                    console.log("Successfully not repeated.");
+                    console.log(counter);
+                    
                     prev_rands[counter] = rand_num3;
                     counter = counter + 1;
                     if (counter >= 6) {
@@ -168,6 +173,7 @@ function callback(results, status) {
                         counter = 0;
                         
                     }
+                    
                     check = 1;
                 }
             
@@ -183,12 +189,14 @@ function callback(results, status) {
                 $('#curr_img').attr('src', the_path + 'chi/' + (rand_num2) + '.jpg');
             else if (the_name.indexOf("Diner") > -1)
                 $('#curr_img').attr('src', the_path + 'diner/' + (rand_num2) + '.jpg');
-            else if ((the_name.indexOf("ind") > -1))
+            else if ((the_name.indexOf("ind") > -1) || (the_name.indexOf("Ind") > -1))
                 $('#curr_img').attr('src', the_path + 'ind/' + (rand_num2) + '.jpg');
-            else if (the_name.indexOf("tal") > -1)
+            else if ((the_name.indexOf("tal") > -1) || (the_name.indexOf("izz") > -1))
                 $('#curr_img').attr('src', the_path + 'ita/' + (rand_num2) + '.jpg');
             else if (the_name.indexOf("exi") > -1)
                 $('#curr_img').attr('src', the_path + 'mex/' + (rand_num2) + '.jpg');
+            else if (the_name.indexOf("ushi") > -1)
+                $('#curr_img').attr('src', the_path + 'sus/' + (rand_num2) + '.jpg');
             else 
                 $('#curr_img').attr('src', the_path + 'res/' + (rand_num3) + '.jpg');
         }
@@ -265,15 +273,36 @@ function callback(results, status) {
 
         if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
             
-            //Both
             $(".dycon").fadeOut(fade);
             $(".dycon").fadeIn(fade);
             curr += 1;
+            check = 0;
             
             rand_num = Math.floor(Math.random() * (4 - 0 + 1)) + 0;
             rand_num2 = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
-            rand_num3 = Math.floor(Math.random() * (22 - 1 + 1)) + 1;
             
+            while (check == 0) {
+                
+                rand_num3 = Math.floor(Math.random() * (22 - 1 + 1)) + 1;
+                
+                if (prev_rands[0] == rand_num3 || prev_rands[1] == rand_num3 || prev_rands[2] == rand_num3 || prev_rands[3] == rand_num3 || prev_rands[4] == rand_num3 || prev_rands[5] == rand_num3) {
+                    
+                    console.log("ERROR: Value was equal to a recent value, generating once more.");
+                    
+                } else {
+
+                    prev_rands[counter] = rand_num3;
+                    counter = counter + 1;
+                    if (counter >= 6) {
+                        
+                        counter = 0;
+                        
+                    }
+                    check = 1;
+                }
+            
+            }
+                
             the_name = places[curr].name;
             
             the_path = "assets/img/res/";
