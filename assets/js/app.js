@@ -89,17 +89,21 @@ function callback(results, status) {
     var the_path;
     var prev_rands = new Array(6);
     var counter = 0;
+    var check = 0;
     
     $('#search-panel').fadeOut(fade);
     setTimeout(function() {
           $('#res_pane').fadeIn(fade);
     }, fade);
     
+    //Initial stuff
+    
     var curr = 0;
     the_path = "assets/img/res/";
     rand_num2 = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
     rand_num3 = Math.floor(Math.random() * (22 - 1 + 1)) + 1;
     prev_rands[counter] = rand_num3;
+    counter = counter + 1;
     the_name = places[curr].name;
     
     if (the_name.indexOf("afe") > -1)
@@ -133,6 +137,8 @@ function callback(results, status) {
     else
         $('#curr_body').append(messages[0][rand_num]);
     
+    //Keboard baus
+    
     $(document).keydown(function(e) {
        
         if (e.which == 37 || e.which == 39) {
@@ -140,11 +146,28 @@ function callback(results, status) {
             $(".dycon").fadeOut(fade);
             $(".dycon").fadeIn(fade);
             curr += 1;
+            check = 0;
             
             rand_num = Math.floor(Math.random() * (4 - 0 + 1)) + 0;
             rand_num2 = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
-            rand_num3 = Math.floor(Math.random() * (22 - 1 + 1)) + 1;
             
+            while (check == 0) {
+                
+                rand_num3 = Math.floor(Math.random() * (22 - 1 + 1)) + 1;
+                
+                if (prev_rands[0] == rand_num3 || prev_rands[1] == rand_num3 || prev_rands[2] == rand_num3 || prev_rands[3] == rand_num3 || prev_rands[4] == rand_num3 || prev_rands[5] == rand_num3) {
+                    
+                    console.log("ERROR: Value was equal to a recent value, generating once more.");
+                    
+                } else {
+
+                    prev_rands[counter] = rand_num3;
+                    counter = counter + 1;
+                    check = 1;
+                }
+            
+            }
+                
             the_name = places[curr].name;
             
             the_path = "assets/img/res/";
@@ -209,6 +232,8 @@ function callback(results, status) {
         }
                 
     });
+    
+    //Siwphaw stif
     
     //Start Swiping Portion
     document.addEventListener('touchstart', handleTouchStart, false);        
