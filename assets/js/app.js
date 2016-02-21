@@ -163,6 +163,11 @@ function callback(results, status) {
 
                     prev_rands[counter] = rand_num3;
                     counter = counter + 1;
+                    if (counter >= 6) {
+                        
+                        counter = 0;
+                        
+                    }
                     check = 1;
                 }
             
