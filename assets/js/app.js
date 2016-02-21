@@ -98,7 +98,8 @@ function callback(results, status) {
     var curr = 0;
     the_path = "assets/img/res/";
     rand_num2 = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
-    rand_num3 = Math.floor(Math.random() * (12 - 1 + 1)) + 1;
+    rand_num3 = Math.floor(Math.random() * (22 - 1 + 1)) + 1;
+    prev_rands[counter] = rand_num3;
     the_name = places[curr].name;
     
     if (the_name.indexOf("afe") > -1)
@@ -142,7 +143,7 @@ function callback(results, status) {
             
             rand_num = Math.floor(Math.random() * (4 - 0 + 1)) + 0;
             rand_num2 = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
-            rand_num3 = Math.floor(Math.random() * (12 - 1 + 1)) + 1;
+            rand_num3 = Math.floor(Math.random() * (22 - 1 + 1)) + 1;
             
             the_name = places[curr].name;
             
@@ -235,13 +236,13 @@ function callback(results, status) {
         if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
             
             //Both
-            $(".dycon").fadeOut(400);
-            $(".dycon").fadeIn(400);
+            $(".dycon").fadeOut(fade);
+            $(".dycon").fadeIn(fade);
             curr += 1;
             
             rand_num = Math.floor(Math.random() * (4 - 0 + 1)) + 0;
             rand_num2 = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
-            rand_num3 = Math.floor(Math.random() * (12 - 1 + 1)) + 1;
+            rand_num3 = Math.floor(Math.random() * (22 - 1 + 1)) + 1;
             
             the_name = places[curr].name;
             
