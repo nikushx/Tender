@@ -166,7 +166,7 @@ function callback(results, status) {
         if(e.which == 39) {
             console.log('right');
             
-            
+            window.open("http://lmgtfy.com/?q=" + places[curr - 1].name);
             
             setTimeout(function() {
                 $('#curr_name').text(places[curr].name);
