@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="assets/img/favicon.ico">
+
+    <title>Tender App</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="assets/css/ionicons.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div id="h2">
+      <div class="logo">
+        <a href="index.html"><h2><i class = "fa fa-cutlery"></i> Tender</h2></a>
+      </div><!--/logo-->
+      <div class="container centered">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default" id="search-panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Enter your location</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">City/State or ZIP Code</span>
+                        <input type="text" id="loc" class="form-control" placeholder="Location" aria-describedby="basic-addon1">
+                    </div>
+                    <div id = "map"></div>
+                </div>
+              </div>
+              
+            <div class="panel panel-default" id="res_pane">
+                <div class="panel-heading">
+                    <h3 class="panel-title dycon" id = "curr_name"></h3>
+                    
+                </div>
+                <div class="panel-body">
+                    <div id = "curr_body"></div>
+                    <img src="assets/img/tav.jpg" class = "img-responsive dycon" id="curr_img" />
+                </div>
+              </div>
+          </div>
+        </div><!--/row-->
+      </div><!--/container-->
+    </div><!--H-->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/retina-1.1.0.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWGE8emCFgDvdYct1FcmkovJM9mR74dgc&libraries=places"></script>
+
+    <script src="assets/js/custom.js"></script>
+    <script src="assets/js/app.js"></script>
+
+
+  
+  </body>
+</html>
