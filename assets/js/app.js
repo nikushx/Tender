@@ -1,6 +1,6 @@
 var places = new Array(100);
 var service;
-var fade = 400;
+var fade = 150;
 
 var main = function () {
     
@@ -87,13 +87,13 @@ function callback(results, status) {
     var rand_num3;
     var the_name;
     var the_path;
+    var prev_rands = new Array(6);
+    var counter = 0;
     
     $('#search-panel').fadeOut(fade);
     setTimeout(function() {
           $('#res_pane').fadeIn(fade);
     }, fade);
-        
-    
     
     var curr = 0;
     the_path = "assets/img/res/";
@@ -136,8 +136,8 @@ function callback(results, status) {
        
         if (e.which == 37 || e.which == 39) {
             
-            $(".dycon").fadeOut(400);
-            $(".dycon").fadeIn(400);
+            $(".dycon").fadeOut(fade);
+            $(".dycon").fadeIn(fade);
             curr += 1;
             
             rand_num = Math.floor(Math.random() * (4 - 0 + 1)) + 0;

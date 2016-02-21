@@ -1,0 +1,130 @@
+
+    
+    //Start Swiping Portion
+    document.addEventListener('touchstart', handleTouchStart, false);        
+    document.addEventListener('touchmove', handleTouchMove, false);
+
+    var xDown = null;                                                        
+    var yDown = null;                                                        
+
+    function handleTouchStart(evt) {                                         
+        xDown = evt.touches[0].clientX;                                      
+        yDown = evt.touches[0].clientY;                                      
+    };                                                
+
+    function handleTouchMove(evt) {
+        if ( ! xDown || ! yDown ) {
+            return;
+        }
+
+        var xUp = evt.touches[0].clientX;                                    
+        var yUp = evt.touches[0].clientY;
+
+        var xDiff = xDown - xUp;
+        var yDiff = yDown - yUp;
+
+        if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
+            
+            $(".dycon").fadeOut(400);
+            $(".dycon").fadeIn(400);
+            curr += 1;
+            check = 0;
+            
+            //Messages at random
+            rand_num = Math.floor(Math.random() * (4 - 0 + 1)) + 0;
+            
+            //Pictures non-generic
+            rand_num2 = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
+            
+            while (check == 0) {
+                
+                //Pictures generic
+                rand_num3 = Math.floor(Math.random() * (22 - 1 + 1)) + 1;
+                console.log("Rand done");
+                if (rand_num3 == prev_rands[0] || rand_num3 == prev_rands[1] || rand_num3 == prev_rands[2] || rand_num3 == prev_rands[3] || rand_num3 == prev_rands[4] || rand_num3 == prev_rands[5]) {
+                    
+                    console.log("Rand Number Match, regenerating");
+                    
+                } else {
+                    console.log(counter);
+                    prev_rands[counter] = rand_num3;
+                    counter = counter + 1;
+                    if (counter >= 6)
+                        counter = 0;
+                    check = 1;
+                }
+                
+            }
+            
+            the_name = places[curr].name;
+            
+            the_path = "assets/img/res/";
+            
+            if (the_name.indexOf("afe") > -1)
+                $('#curr_img').attr('src', the_path + 'cafe/' + (rand_num2) + '.jpg');
+            else if (the_name.indexOf("hin") > -1)
+                $('#curr_img').attr('src', the_path + 'chi/' + (rand_num2) + '.jpg');
+            else if (the_name.indexOf("Diner") > -1)
+                $('#curr_img').attr('src', the_path + 'diner/' + (rand_num2) + '.jpg');
+            else if ((the_name.indexOf("Ind") > -1) || (the_name.indexOf("ind") > -1))
+                $('#curr_img').attr('src', the_path + 'ind/' + (rand_num2) + '.jpg');
+            else if (the_name.indexOf("tal") > -1)
+                $('#curr_img').attr('src', the_path + 'ita/' + (rand_num2) + '.jpg');
+            else if (the_name.indexOf("exi") > -1)
+                $('#curr_img').attr('src', the_path + 'mex/' + (rand_num2) + '.jpg');
+            else if (the_name.indexOf("ush") > -1)
+                $('#curr_img').attr('src', the_path + 'sus/' + (rand_num2) + '.jpg');
+            else 
+                $('#curr_img').attr('src', the_path + 'res/' + (rand_num3) + '.jpg');
+            }
+            
+            if ( xDiff > 0 ) {
+                setTimeout(function() {
+                    $('#curr_name').text(places[curr].name);
+                    $('#curr_body').text(places[curr].formatted_address);
+                    $('#curr_body').append(document.createElement("br"));
+                    $('#curr_body').append('Rating: ' + places[curr].rating + '/5.0');
+                    $('#curr_body').append(document.createElement("br"));
+                    if (places[curr].rating > 4.0 && places[curr].rating <= 5.0)
+                        $('#curr_body').append(messages[4][rand_num]);
+                    else if (places[curr].rating > 3.0 && places[curr].rating <= 4.0)
+                        $('#curr_body').append(messages[3][rand_num]);
+                    else if (places[curr].rating > 2.0 && places[curr].rating <= 3.0)
+                        $('#curr_body').append(messages[2][rand_num]);
+                    else if (places[curr].rating > 1.0 && places[curr].rating <= 2.0)
+                        $('#curr_body').append(messages[1][rand_num]);
+                    else
+                        $('#curr_body').append(messages[0][rand_num]);
+                }, fade);
+            } else {
+                window.open("http://lmgtfy.com/?q=" + places[curr - 1].name);
+
+                setTimeout(function() {
+                    $('#curr_name').text(places[curr].name);
+                    $('#curr_body').text(places[curr].formatted_address);
+                    $('#curr_body').append(document.createElement("br"));
+                    $('#curr_body').append('Rating: ' + places[curr].rating + '/5.0');
+                    $('#curr_body').append(document.createElement("br"));
+                    if (places[curr].rating > 4.0 && places[curr].rating <= 5.0)
+                        $('#curr_body').append(messages[4][rand_num]);
+                    else if (places[curr].rating > 3.0 && places[curr].rating <= 4.0)
+                        $('#curr_body').append(messages[3][rand_num]);
+                    else if (places[curr].rating > 2.0 && places[curr].rating <= 3.0)
+                        $('#curr_body').append(messages[2][rand_num]);
+                    else if (places[curr].rating > 1.0 && places[curr].rating <= 2.0)
+                        $('#curr_body').append(messages[1][rand_num]);
+                    else
+                        $('#curr_body').append(messages[0][rand_num]);
+                }, fade);
+            }                       
+        } else {
+            if ( yDiff > 0 ) {
+                /* up swipe */ 
+            } else { 
+                /* down swipe */
+            }                                                                 
+        }
+        /* reset values */
+        xDown = null;
+        yDown = null;                                             
+    };
